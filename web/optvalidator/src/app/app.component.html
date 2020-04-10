@@ -1,0 +1,40 @@
+<div class="container">
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email address</label>
+      <input
+        type="tel"
+        class="form-control"
+        id="mobileNumber"
+        aria-describedby="mobileNumber"
+        placeholder="Enter Mobile Number"
+        name="mobile"
+        ngModel
+        required
+        #Mobile="ngModel"
+      />
+    </div>
+
+    <button type="submit" class="btn btn-primary" *ngIf="!otpflag">
+      Submit
+    </button>
+  </form>
+  <form #f="ngForm" (ngSubmit)="validateOTP(f)" *ngIf="otpflag">
+    <div class="form-group">
+      <label for="otpNum">OTP</label>
+      <input
+        type="num"
+        class="form-control"
+        id="otp"
+        aria-describedby="otp"
+        placeholder="Enter OTP"
+        name="otpNum"
+        ngModel
+        required
+        #OTP="ngModel"
+      />
+    </div>
+    <p *ngIf="message">{{ message }}</p>
+    <button type="submit" class="btn btn-primary">Validate</button>
+  </form>
+</div>
